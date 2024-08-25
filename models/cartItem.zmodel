@@ -1,0 +1,16 @@
+
+ import "./cart.zmodel"  
+ import "./serviceProvider.zmodel"  
+
+model CartItem {
+
+    id                String        @id @default(uuid())  
+    cartId        String          
+    cart            Cart?            @relation(fields: [cartId], references: [id], name:"cart")  
+    serviceProviderId  String          
+    serviceProvider  ServiceProvider?  @relation(fields: [serviceProviderId], references: [id], name:"serviceProvider")  
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}

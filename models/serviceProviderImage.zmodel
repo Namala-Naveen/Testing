@@ -1,0 +1,14 @@
+
+ import "./serviceProvider.zmodel"  
+
+model ServiceProviderImage {
+
+    id                String        @id @default(uuid())  
+    imageUrl    String          
+    serviceProviderId  String          
+    serviceProvider  ServiceProvider?  @relation(fields: [serviceProviderId], references: [id], name:"serviceProvider")  
+
+dateCreated DateTime @default(now())
+      dateUpdated DateTime @updatedAt  @default(now())
+      @@allow("all", true)
+}
